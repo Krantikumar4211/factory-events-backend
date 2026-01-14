@@ -35,6 +35,68 @@ Backend service for ingesting factory machine events, deduplicating data, and pr
 
 ---
 
+## 📂 Project Structure
+
+```text
+factory-events-backend
+├── .mvn/
+│   └── wrapper/
+├── src/
+│   ├── main/
+│   │   ├── java/com/events/
+│   │   │   ├── controller/        # REST Controllers
+│   │   │   │   ├── EventIngestController.java
+│   │   │   │   └── StatsController.java
+│   │   │   ├── dto/               # Request / Response DTOs
+│   │   │   │   ├── EventRequestDTO.java
+│   │   │   │   ├── DailyStatsDTO.java
+│   │   │   │   ├── MachineStatsDTO.java
+│   │   │   │   └── TopDefectLineDTO.java
+│   │   │   ├── entity/            # JPA Entities
+│   │   │   │   └── EventEntity.java
+│   │   │   ├── repository/        # Spring Data JPA Repositories
+│   │   │   │   └── EventRepository.java
+│   │   │   ├── service/           # Business Logic
+│   │   │   │   ├── EventIngestService.java
+│   │   │   │   ├── StatsService.java
+│   │   │   │   └── BatchResult.java
+│   │   │   ├── validation/        # Validation Layer
+│   │   │   │   ├── EventValidator.java
+│   │   │   │   └── ValidationResult.java
+│   │   │   ├── util/              # Utility Classes
+│   │   │   │   └── HashUtil.java
+│   │   │   └── FactoryEventsBackendApplication.java
+│   │   └── resources/
+│   │       └── application.properties
+│   └── test/
+│       ├── java/com/events/
+│       │   ├── controller/        # Controller Tests
+│       │   ├── service/           # Service & Concurrency Tests
+│       │   ├── repository/        # Repository Tests
+│       │   └── FactoryEventsBackendApplicationTests.java
+│       └── resources/
+│           └── application-test.properties
+├── pom.xml
+├── mvnw / mvnw.cmd
+└── README.md
+```
+
+---
+
+🧩 **Architecture Overview**
+
+- Controller Layer → Handles HTTP requests
+
+- Service Layer → Business logic, concurrency handling
+
+- Repository Layer → Database access & deduplication
+
+- Validation Layer → Input validation & rule enforcement
+
+- Test Layer → Unit, integration & concurrency tests
+
+---
+
 ## 🔗 API Endpoints
 
 ### Batch Ingest
@@ -103,7 +165,8 @@ http://localhost:8080
 ---
 
 👤 **Author**
-``` Krantikumar Dilip Patil
+```
+Krantikumar Dilip Patil
 krantikumar4211@gmail.com
 +91-7507494211
 ```
